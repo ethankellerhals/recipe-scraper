@@ -1,0 +1,50 @@
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <title>Title</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+    </head>
+    <nav>
+        <a href="./donate">Donate</a>
+        <a href="./about">About</a>
+    </nav>
+    <body>
+        <div class="uk-container">
+            <form id="ingredientForm" class="uk-form-stacked">
+                <button class="uk-button uk-button-primary" type="button" onclick="findMatchingDrinks()">Find Drinks</button>
+            </form>
+            <div id="resultContainer" class="uk-margin-top">
+
+            </div>
+        </div>
+
+    </body>
+    <script src="./assets/js/app.js"></script>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drink Recipes</title>
+</head>
+<body>
+    <div class="uk-container">
+        <form action="/find_drinks" method="post" class="uk-form-stacked">
+            <!-- Ingredient checkboxes go here -->
+
+            <h2>Select Ingredients</h2>
+            
+            {% for ingredient in ingredients %}
+                <label><input type="checkbox" name="ingredients" value="{{ ingredient }}"> {{ ingredient }}</label><br>
+            {% endfor %}
+            <button class="uk-button uk-button-primary" type="submit">Find Drinks</button>
+        </form>
+    </div>
+</body>
+</html>

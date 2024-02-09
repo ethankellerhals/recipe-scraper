@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drink Recipes</title>
+</head>
+<body>
+    <div class="uk-container">
+        <h2>Matched Drinks</h2>
+        {% if matched_drinks %}
+            <ul>
+                {% for drink, details in matched_drinks.items() %}
+                    <li>
+                        <strong>{{ drink }}</strong>
+                        <ul>
+                            {% for ingredient, ounces in details['ingredients'].items() %}
+                                <li>{{ ingredient }}: {{ ounces }}</li>
+                            {% endfor %}
+                        </ul>
+                        <p><strong>Instructions:</strong> {{ details['instructions'] }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No drinks found with selected ingredients.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
