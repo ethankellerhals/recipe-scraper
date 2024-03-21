@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,7 @@
     <title>Drink Recipes</title>
 </head>
 <body>
-    <div class="uk-container">
+    <div class="container">
         <h2>Matched Drinks</h2>
         {% if matched_drinks %}
             <ul>
@@ -19,6 +19,47 @@
                             {% endfor %}
                         </ul>
                         <p><strong>Instructions:</strong> {{ details['instructions'] }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No drinks found with selected ingredients.</p>
+        {% endif %}
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drink Recipes</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Matched Drinks</h2>
+        {% if matched_drinks %}
+            <ul>
+                {% for drink_title, drink in matched_drinks.items() %}
+                    <li>
+                        <strong>{{ drink_title }}</strong>
+                        <ul>
+                            {% for ingredient in drink['ingredients'] %}
+                                <li>{{ ingredient }}</li>
+                            {% endfor %}
+                        </ul>
+                        <p><strong>Instructions:</strong></p>
+                        <ul>
+                            {% for instruction in drink['instructions'] %}
+                                <li>{{ instruction }}</li>
+                            {% endfor %}
+                        </ul>
+                        <p><strong>Garnishes:</strong></p>
+                        <ul>
+                            {% for garnish in drink['garnishes'] %}
+                                <li>{{ garnish }}</li>
+                            {% endfor %}
+                        </ul>
                     </li>
                 {% endfor %}
             </ul>

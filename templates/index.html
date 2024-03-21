@@ -32,18 +32,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drink Recipes</title>
+    <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
-    <div class="uk-container">
-        <form action="/find_drinks" method="post" class="uk-form-stacked">
-            <!-- Ingredient checkboxes go here -->
-
-            <h2>Select Ingredients</h2>
-            
-            {% for ingredient in ingredients %}
-                <label><input type="checkbox" name="ingredients" value="{{ ingredient }}"> {{ ingredient }}</label><br>
+    <div id="app">
+        <form action="/find_drinks" method="post" class="form-stacked">
+            <h2>Select Alcohol</h2>
+            {% for liquor in liquors %}
+                <label><input type="checkbox" name="liquors" value="{{ liquor }}"> {{ liquor }}</label><br>
             {% endfor %}
-            <button class="uk-button uk-button-primary" type="submit">Find Drinks</button>
+            <h2>Select Mixers</h2>
+            {% for mixer in mixers %}
+                <label><input type="checkbox" name="mixers" value="{{ mixer }}"> {{ mixer }}</label><br>
+            {% endfor %}
+            <h2>Select Garnishes</h2>
+            {% for garnish in garnishes %}
+                <label><input type="checkbox" name="garnishes" value="{{ garnishe }}"> {{ garnish }}</label><br>
+            {% endfor %}
+            <button class="button button-primary" type="submit">Find Drinks</button>
         </form>
     </div>
 </body>

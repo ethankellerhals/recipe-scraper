@@ -1,5 +1,5 @@
 {
-    "Cocktails with beer": [
+    "Beer": [
         {
             "title": "Black and Tan",
             "ingredients": [
@@ -50,7 +50,7 @@
             "garnishes": []
         }
     ],
-    "Cocktails with bourbon": [
+    "Bourbon": [
         {
             "title": "American Revolution",
             "ingredients": [
@@ -103,7 +103,7 @@
             "garnishes": []
         }
     ],
-    "Cocktails with brandy": [
+    "Brandy": [
         {
             "title": "Alexander",
             "ingredients": [
@@ -162,7 +162,7 @@
             ]
         }
     ],
-    "Cocktails with gin": [
+    "Gin": [
         {
             "title": "Adios Motherfucker",
             "ingredients": [
@@ -259,8 +259,15 @@
         },
         {
             "title": "Gin and Tonic",
-            "ingredients": [],
-            "instructions": [],
+            "ingredients": [
+                "Tonic water",
+                "1 1/2 oz. Gin (or 1 jigger)",
+                "1 Wedge of lime or lemon"
+            ],
+            "instructions": [
+                "Many different ratios of the gin and tonic cocktail exist. The most common ratios are 1 part gin to 3 parts tonic and 1 part gin to 1 part tonic. A good gin and tonic, however, is just in the middle of those ratios.",
+                "First, take the wedge of Lime (or lemon, lime is preferable) and squeeze gently while running round the rim of the glass then drop in the bottom. Add plenty of ice, about 2/3 filling your glass. Pour the Gin first, then fill the glass to the top with tonic. You should always pour the alcohol first so that stirring is not required."
+            ],
             "garnishes": []
         },
         {
@@ -333,7 +340,7 @@
             "garnishes": []
         }
     ],
-    "Cocktails with rum": [
+    "Rum": [
         {
             "title": "Adios Motherfucker",
             "ingredients": [
@@ -477,7 +484,7 @@
             "garnishes": []
         }
     ],
-    "Cocktails with tequila": [
+    "Tequila": [
         {
             "title": "Flat Liner",
             "ingredients": [
@@ -511,7 +518,7 @@
             "garnishes": []
         }
     ],
-    "Cocktails with vodka": [
+    "Vodka": [
         {
             "title": "Adios Motherfucker",
             "ingredients": [
@@ -647,7 +654,7 @@
             "garnishes": []
         }
     ],
-    "Cocktails with whiskey": [
+    "Whiskey": [
         {
             "title": "Boilermaker",
             "ingredients": [
@@ -792,7 +799,7 @@
             ]
         }
     ],
-    "Cocktails with wine": [
+    "Wine": [
         {
             "title": "Cheeky Vimto",
             "ingredients": [
@@ -814,7 +821,7 @@
             "garnishes": []
         }
     ],
-    "Cocktails with amaretto": [
+    "Amaretto": [
         {
             "title": "Flaming Dr. Pepper",
             "ingredients": [
@@ -837,7 +844,7 @@
             "garnishes": []
         }
     ],
-    "Cocktails with J\u00e4germeister": [
+    "J\u00e4germeister": [
         {
             "title": "Bob Dylan",
             "ingredients": [
@@ -868,8 +875,8 @@
             "garnishes": []
         }
     ],
-    "Cocktails with orange flavored liqueur": [],
-    "Cocktails with sake": [
+    "orange flavored liqueur": [],
+    "sake": [
         {
             "title": "Tiger Friday",
             "ingredients": [],
