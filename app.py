@@ -29,7 +29,7 @@ def find_drinks():
     selected_liquors = request.form.getlist('liquors')
     selected_mixers = request.form.getlist('mixers')
     selected_garnishes = request.form.getlist('garnishes')
-    print(selected_liquors)
+    
     matched_drinks = get_matched_drinks(selected_liquors, selected_mixers, selected_garnishes)
     
     return render_template('results.html', matched_drinks=matched_drinks)
@@ -38,13 +38,18 @@ def get_matched_drinks(selected_liquors, selected_mixers, selected_garnishes):
     matched_drinks = {}
     i = 0
     for category, drinks in drink_data.items():
-        if category == selected_liquors[i]:
-            for drink in drinks:
-                drink_title = drink['title']
-                drink_ingredients = drink['ingredients']
-                print(drink_title)
-            if i < len(selected_liquors) - 1:
-                i += 1
+        for drink in drinks:
+
+            if all(ingredient in drinks for ingredient in selected_liquors) and all(ingredient in drinks for ingredient in selected_mixers):
+                matched_drinks[drink['title']] = drinks
+        # if category == selected_liquors[i]:
+        #     for drink in drinks:
+        #         matched_drinks[drink['title']] = drink
+                
+        #     if i < len(selected_liquors) - 1:
+        #         i += 1
+            
+
         # for drink in drinks:
         #     drink_title = drink['title']
         #     drink_ingredients = drink['ingredients']
@@ -52,7 +57,7 @@ def get_matched_drinks(selected_liquors, selected_mixers, selected_garnishes):
         #         print(drink_title)
         #     if selected_liquors in drink_ingredients:
         #         matched_drinks[drink_title] = drink
-
+    print(matched_drinks)
     
     #print(drink_data.items())
     

@@ -1,33 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drink Recipes</title>
-</head>
-<body>
-    <div class="container">
-        <h2>Matched Drinks</h2>
-        {% if matched_drinks %}
-            <ul>
-                {% for drink, details in matched_drinks.items() %}
-                    <li>
-                        <strong>{{ drink }}</strong>
-                        <ul>
-                            {% for ingredient, ounces in details['ingredients'].items() %}
-                                <li>{{ ingredient }}: {{ ounces }}</li>
-                            {% endfor %}
-                        </ul>
-                        <p><strong>Instructions:</strong> {{ details['instructions'] }}</p>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No drinks found with selected ingredients.</p>
-        {% endif %}
-    </div>
-</body>
-</html> -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,21 +15,31 @@
                     <li>
                         <strong>{{ drink_title }}</strong>
                         <ul>
-                            {% for ingredient in drink['ingredients'] %}
-                                <li>{{ ingredient }}</li>
-                            {% endfor %}
+                            {% if drink['ingredients'] %}
+                                {% for ingredient in drink['ingredients'] %}
+                                    <li>{{ ingredient }}</li>
+                                {% endfor %}
+                            {% endif %}
                         </ul>
                         <p><strong>Instructions:</strong></p>
                         <ul>
-                            {% for instruction in drink['instructions'] %}
-                                <li>{{ instruction }}</li>
-                            {% endfor %}
+                            {% if drink['instructions'] %}
+                                {% for instruction in drink['instructions'] %}
+                                    <li>{{ instruction }}</li>
+                                {% endfor %}
+                            {% else %}
+                                <li>No instructions available.</li>
+                            {% endif %}
                         </ul>
                         <p><strong>Garnishes:</strong></p>
                         <ul>
-                            {% for garnish in drink['garnishes'] %}
-                                <li>{{ garnish }}</li>
-                            {% endfor %}
+                            {% if drink['garnishes'] %}
+                                {% for garnish in drink['garnishes'] %}
+                                    <li>{{ garnish }}</li>
+                                {% endfor %}
+                            {% else %}
+                                <li>No garnishes available.</li>
+                            {% endif %}
                         </ul>
                     </li>
                 {% endfor %}
