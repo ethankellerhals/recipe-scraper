@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drink Recipes</title>
+    <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
     <div class="container">
@@ -12,17 +13,18 @@
         {% if matched_drinks %}
             <ul>
                 {% for drink_title, drink in matched_drinks.items() %}
-                    <li>
-                        <strong>{{ drink_title }}</strong>
-                        <ul>
+                    <li id="drink">
+                        <h4 id="drink-name">{{ drink_title }}</h4>
+                        <p class="sub-heading">Ingredients:</p>
+                        <ul class="info ingrendients">
                             {% if drink['ingredients'] %}
                                 {% for ingredient in drink['ingredients'] %}
                                     <li>{{ ingredient }}</li>
                                 {% endfor %}
                             {% endif %}
                         </ul>
-                        <p><strong>Instructions:</strong></p>
-                        <ul>
+                        <p class="sub-heading">Instructions:</p>
+                        <ul class="info instructions">
                             {% if drink['instructions'] %}
                                 {% for instruction in drink['instructions'] %}
                                     <li>{{ instruction }}</li>
@@ -31,8 +33,8 @@
                                 <li>No instructions available.</li>
                             {% endif %}
                         </ul>
-                        <p><strong>Garnishes:</strong></p>
-                        <ul>
+                        <p class="sub-heading">Garnishes:</p>
+                        <ul class="info garnishes">
                             {% if drink['garnishes'] %}
                                 {% for garnish in drink['garnishes'] %}
                                     <li>{{ garnish }}</li>

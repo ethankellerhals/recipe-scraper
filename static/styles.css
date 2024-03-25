@@ -6,3 +6,46 @@ body {
 	padding: 0;
 }
 
+.container {
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+	padding-top: 2em;
+	padding-left: 5em;
+	padding-right: 5em;
+}
+
+#drink {
+	list-style-type: none;
+	padding: 0;
+}
+
+#drink-name {
+	font-size: 1em;
+}
+
+.info {
+	padding-left: 4em;
+}
+.sub-heading {
+	padding-left: 2em;
+}
+
+#app {
+	padding-top: 2em;
+	padding-left: 5em;
+	padding-right: 5em;
+}
+.form-inline {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+}
+/* .form-group {
+	display: inline-block;
+	padding-left: 10em;
+	justify-content: space-between;
+	
+} */
+

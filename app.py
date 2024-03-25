@@ -19,9 +19,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    liquors = ['Gin', 'White Rum', 'Spiced Rum', 'Vodka', 'Tequila', 'Whiskey', 'Brandy']
-    mixers = ['Club Soda', 'Tonic Water', 'Ginger Beer', 'Coke', 'Lemon-Lime Soda', 'Ginger Ale', 'Orange Juice', 'Cranberry Juice', 'Pineapple Juice', 'Grapefruit Juice', 'Lemon Juice', 'Lime Juice', 'Simple Syrup', 'Grenadine', 'Cola', 'Tomato Juice', 'Bloody Mary Mix', 'Sour Mix', 'Milk', 'Cream', 'Coconut Milk', 'Pineapple Juice', 'Cranberry Juice', 'Grapefruit Juice', 'Lemon Juice', 'Lime Juice', 'Simple Syrup', 'Grenadine', 'Cola', 'Tomato Juice', 'Bloody Mary Mix', 'Sour Mix', 'Milk', 'Cream', 'Coconut Milk']
-    garnishes = ['Lime Juice', 'Lime Wedge', 'Lemon Juice', 'Lemon Wedge','Orange Wedge', 'Cherry', 'Olives', 'Celery', 'Mint']
+    # different types of rums (spiced, white)
+    liquors = ['Beer', 'Bourbon', 'Brandy', 'Gin', 'Rum', 'Sake', 'Tequila', 'Vodka', 'Whiskey', 'Wine']
+    mixers = ['Bloody Mary Mix', 'Club Soda', 'Coconut Milk', 'Coke', 'Cranberry Juice', 'Cream', 'Ginger Ale', 'Ginger Beer', 'Grapefruit Juice', 'Grenadine',  'Lemon Juice', 'Lemon-Lime Soda', 'Lime Juice', 'Milk', 'Orange Juice', 'Pineapple Juice', 'Simple Syrup', 'Sour Mix', 'Tomato Juice', 'Tonic Water']
+
+    garnishes = ['Celery', 'Cherry', 'Lemon Wedge', 'Lime Wedge', 'Mint', 'Nutmeg', 'Olives', 'Orange Wedge']
+
     return render_template('index.html', liquors=liquors, mixers=mixers, garnishes=garnishes)
 
 @app.route('/find_drinks', methods=['POST'])
@@ -36,16 +39,42 @@ def find_drinks():
 
 def get_matched_drinks(selected_liquors, selected_mixers, selected_garnishes):
     matched_drinks = {}
-    i = 0
-    for category, drinks in drink_data.items():
+    i = j = k = 0
 
-        if category == selected_liquors[i]:
-            for drink in drinks:
-                matched_drinks[drink['title']] = drink
+
+    for liquor in selected_liquors:
+        for drink_list in drink_data.values():
+            print(drink_list)
+            for drink in drink_list:
+                if all(liquor.lower() in ingredient.lower() for ingredient in drink['ingredients']):
+                    matched_drinks[drink['title']] = drink
+                elif any(liquor.lower() in ingredient.lower() for ingredient in drink['ingredients']):
+                    matched_drinks[drink['title']] = drink
+    
+    # for category, drinks in drink_data.items():
+    #     if category == selected_liquors[i]:
+    #         for drink in drinks:
+    #             matched_drinks[drink['title']] = drink
                 
-            if i < len(selected_liquors) - 1:
-                i += 1
-        
+    #         if i < len(selected_liquors) - 1:
+    #             i += 1
+        # else:
+        #     for drink in drinks:
+        #         if selected_mixers[j] in drink['ingredients']:
+        #             matched_drinks[drink['title']] = drink
+        #             if j < len(selected_mixers) - 1:
+        #                 j += 1
+        #         elif selected_garnishes[k] in drink['ingredients']:
+        #             matched_drinks[drink['title']] = drink
+        #             if k < len(selected_garnishes) - 1:
+        #                 k += 1
+
+
+    print(matched_drinks)
+    return matched_drinks
+
+if __name__ == "__main__":
+    app.run(debug=True)
 
         # for drink in drinks:
         #     drink_title = drink['title']
@@ -66,11 +95,6 @@ def get_matched_drinks(selected_liquors, selected_mixers, selected_garnishes):
     #                 and all(ingredient in drink_ingredients for ingredient in selected_mixers) \
     #                 and all(ingredient in drink_ingredients for ingredient in selected_garnishes):
     #             matched_drinks[drink_title] = drink
-    print(matched_drinks)
-    return matched_drinks
-
-if __name__ == "__main__":
-    app.run(debug=True)
 
 # def get_matched_drinks(selected_liquors, selected_mixers, selected_garnishes):
 
