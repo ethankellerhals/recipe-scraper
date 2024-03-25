@@ -42,22 +42,22 @@ def get_matched_drinks(selected_liquors, selected_mixers, selected_garnishes):
     i = j = k = 0
 
 
-    for liquor in selected_liquors:
-        for drink_list in drink_data.values():
-            print(drink_list)
-            for drink in drink_list:
-                if all(liquor.lower() in ingredient.lower() for ingredient in drink['ingredients']):
-                    matched_drinks[drink['title']] = drink
-                elif any(liquor.lower() in ingredient.lower() for ingredient in drink['ingredients']):
-                    matched_drinks[drink['title']] = drink
-    
-    # for category, drinks in drink_data.items():
-    #     if category == selected_liquors[i]:
-    #         for drink in drinks:
-    #             matched_drinks[drink['title']] = drink
+    # for liquor in selected_liquors:
+    #     for drink_list in drink_data.values():
+    #         for drink in drink_list:
                 
-    #         if i < len(selected_liquors) - 1:
-    #             i += 1
+    #             if all(liquor.lower() in ingredient.lower() for ingredient in drink['ingredients']):
+    #                 matched_drinks[drink['title']] = drink
+    #             elif any(liquor.lower() in ingredient.lower() for ingredient in drink['ingredients']):
+    #                 matched_drinks[drink['title']] = drink
+    
+    for category, drinks in drink_data.items():
+        if category == selected_liquors[i]:
+            for drink in drinks:
+                matched_drinks[drink['title']] = drink
+                
+            if i < len(selected_liquors) - 1:
+                i += 1
         # else:
         #     for drink in drinks:
         #         if selected_mixers[j] in drink['ingredients']:
