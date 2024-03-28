@@ -14,14 +14,22 @@ body {
 	padding-left: 5em;
 	padding-right: 5em;
 }
-
+#drink-list {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 1em;
+}
 #drink {
 	list-style-type: none;
 	padding: 0;
+	justify-content: space-around;
+	background-color: white;
 }
 
 #drink-name {
-	font-size: 1em;
+	font-size: 1.25em;
+	background-color: rgb(170, 249, 255);
+	padding: 1em;
 }
 
 .info {

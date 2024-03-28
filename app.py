@@ -21,8 +21,11 @@ app = Flask(__name__)
 def index():
     # different types of rums (spiced, white)
     liquors = ['Beer', 'Bourbon', 'Brandy', 'Gin', 'Rum', 'Sake', 'Tequila', 'Vodka', 'Whiskey', 'Wine']
+    liqueurs = ['Absinthe', 'Amaretto', 'Amaro', 'Aperol', 'Benedictine', 'Cappelletti', 'Campari', 'Chambord', 'Chartreuse', 'Crème de Cacao (chocolate)', 'Crème de Cassis (black currant)', 'Crème de Menthe (mint)', 'Crème de Mûre (blackberry)', 'Crème de Noyaux (almond)', 'Coffee Liqueur (Kahlua, Tia Maria)', 'Drambuie', 'Jägermeister', 'Galliano', 'Hpnotiq', 'Irish Cream (Baileys)', 'Licor 43', 'Limoncello', 'Maraschino Liqueur', 'Midori', 'Triple Sec', 'Pastis', 'Pernod', "Pimm's", 'Peppermint Schnapps', 'Cinnamon Schnapps', 'Peach Schnapps', 'Sloe Gin', 'St Germain', 'Suze']
     mixers = ['Bloody Mary Mix', 'Club Soda', 'Coconut Milk', 'Coke', 'Cranberry Juice', 'Cream', 'Ginger Ale', 'Ginger Beer', 'Grapefruit Juice', 'Grenadine',  'Lemon Juice', 'Lemon-Lime Soda', 'Lime Juice', 'Milk', 'Orange Juice', 'Pineapple Juice', 'Simple Syrup', 'Sour Mix', 'Tomato Juice', 'Tonic Water']
-
+    sodas = ['Club Soda', 'Coke', 'Ginger Ale', 'Ginger Beer', '7-Up', 'Sprite', 'Tonic Water']
+    juices = ['Apple Juice', 'Cranberry Juice', 'Grapefruit Juice', 'Lemon Juice', 'Lime Juice', 'Orange Juice', 'Pineapple Juice', 'Tomato Juice']
+    others = ['Celery Salt', 'Tabasco', 'Horseradish', 'Worcestershire Sauce', 'Soy Sauce', 'Sriracha', 'Bitters', 'Simple Syrup', 'Grenadine', 'Mint', 'Sugar', 'Salt', 'Pepper', 'Egg White', 'Cream', 'Coconut Milk', 'Milk', 'Coffee', 'Tea', 'Hot Chocolate', 'Honey', 'Maple Syrup', 'Agave Nectar', 'Lemonade', 'Sour Mix']
     garnishes = ['Celery', 'Cherry', 'Lemon Wedge', 'Lime Wedge', 'Mint', 'Nutmeg', 'Olives', 'Orange Wedge']
 
     return render_template('index.html', liquors=liquors, mixers=mixers, garnishes=garnishes)
@@ -50,14 +53,27 @@ def get_matched_drinks(selected_liquors, selected_mixers, selected_garnishes):
     #                 matched_drinks[drink['title']] = drink
     #             elif any(liquor.lower() in ingredient.lower() for ingredient in drink['ingredients']):
     #                 matched_drinks[drink['title']] = drink
-    
+    liquor_amount = len(selected_liquors)
+    mixer_amount = len(selected_mixers)
+    garnish_amount = len(selected_garnishes)
     for category, drinks in drink_data.items():
-        if category == selected_liquors[i]:
-            for drink in drinks:
-                matched_drinks[drink['title']] = drink
+        # if category == selected_liquors[i]:
+        #     for drink in drinks:
+        #         matched_drinks[drink['title']] = drink
                 
-            if i < len(selected_liquors) - 1:
-                i += 1
+        #     if i < len(selected_liquors) - 1:
+        #         i += 1
+        if mixer_amount == 0 and garnish_amount == 0:
+            if liquor_amount == 1:
+                if category == selected_liquors[0]:
+                    for drink in drinks:
+                        matched_drinks[drink['title']] = drink
+        else:
+            for drink in drinks:
+                if any(ingredient.lower() in [liquor.lower() for liquor in selected_liquors] for ingredient in drink['ingredients']) or any(ingredient.lower() in [mixer.lower() for mixer in selected_mixers] for ingredient in drink['ingredients']) or any(ingredient.lower() in [garnish.lower() for garnish in selected_garnishes] for ingredient in drink['ingredients']):
+                    matched_drinks[drink['title']] = drink
+
+
         # else:
         #     for drink in drinks:
         #         if selected_mixers[j] in drink['ingredients']:
@@ -111,7 +127,7 @@ if __name__ == "__main__":
 
 
 
-    #liqueurs = ['Absinthe', 'Amaretto', 'Amaro', 'Aperol', 'Benedictine', 'Cappelletti', 'Campari', 'Chambord', 'Chartreuse', 'Crème de Cacao (chocolate)', 'Crème de Cassis (black currant)', 'Crème de Menthe (mint)', 'Crème de Mûre (blackberry)', 'Crème de Noyaux (almond)', 'Coffee Liqueur (Kahlua, Tia Maria)', 'Drambuie', 'Jägermeister', 'Galliano', 'Hpnotiq', 'Irish Cream (Baileys)', 'Licor 43', 'Limoncello', 'Maraschino Liqueur', 'Midori', 'Triple Sec', 'Pastis', 'Pernod', "Pimm's", 'Peppermint Schnapps', 'Cinnamon Schnapps', 'Peach Schnapps', 'Sloe Gin', 'St Germain', 'Suze'] # Orange Liqueurs (triple sec) maybe more specified
+ # Orange Liqueurs (triple sec) maybe more specified
     #ingredients = ['Gin', 'Vodka', 'Tequila', 'Triple Sec', 'Dry Vermouth', 'Campari', 'Sweet Vermouth', 'Lime Juice']
 
     # for drink, details in drink_data.items():

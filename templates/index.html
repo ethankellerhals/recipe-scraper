@@ -35,28 +35,55 @@
     <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
+    <header>
+        <h1>Drink Recipes</h1>
+        
+    </header>
     <div id="app">
+        
         <form action="/find_drinks" method="post" class="form-inline">
             <div class="form-group alcohol">
                 <h2>Select Alcohol</h2>
                 {% for liquor in liquors %}
                     <label><input type="checkbox" name="liquors" value="{{ liquor }}"> {{ liquor }}</label><br>
                 {% endfor %}
+                <button class="button button-primary" type="button" onclick="showMixers()">Next</button>
             </div>
-            <div class="form-group mixers">
+            <div class="form-group mixers" style="display: none;">
                 <h2>Select Mixers</h2>
                 {% for mixer in mixers %}
                     <label><input type="checkbox" name="mixers" value="{{ mixer }}"> {{ mixer }}</label><br>
                 {% endfor %}
+                <button class="button button-primary" type="button" onclick="showAlcohols()">Back</button>
+                <button class="button button-primary" type="button" onclick="showGarnishes()">Next</button>
             </div>
-            <div class="form-group garnishes">
+            <div class="form-group garnishes" style="display: none;">
                 <h2>Select Garnishes</h2>
                 {% for garnish in garnishes %}
-                    <label><input type="checkbox" name="garnishes" value="{{ garnishe }}"> {{ garnish }}</label><br>
+                    <label><input type="checkbox" name="garnishes" value="{{ garnish }}"> {{ garnish }}</label><br>
                 {% endfor %}
+                <button class="button button-primary" type="button" onclick="showMixers()">Back</button>
+                <button class="button button-primary" type="submit">Find Drinks</button>
             </div>
-            <button class="button button-primary" type="submit">Find Drinks</button>
         </form>
     </div>
+    <footer>
+        <p>Have a suggestion? Please send us an email <a href="#">here</a>.</p>
+    </footer>
+    <script>
+        function showAlcohols() {
+            document.querySelector('.mixers').style.display = 'none';
+            document.querySelector('.alcohol').style.display = 'block';
+        }
+        function showMixers() {
+            document.querySelector('.alcohol').style.display = 'none';
+            document.querySelector('.mixers').style.display = 'block';
+            document.querySelector('.garnishes').style.display = 'none';
+        }
+        function showGarnishes() {
+            document.querySelector('.mixers').style.display = 'none';
+            document.querySelector('.garnishes').style.display = 'block';
+        }
+    </script>
 </body>
 </html>

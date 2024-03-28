@@ -11,7 +11,7 @@
     <div class="container">
         <h2>Matched Drinks</h2>
         {% if matched_drinks %}
-            <ul>
+            <ul id="drink-list">
                 {% for drink_title, drink in matched_drinks.items() %}
                     <li id="drink">
                         <h4 id="drink-name">{{ drink_title }}</h4>
