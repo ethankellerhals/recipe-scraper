@@ -7,7 +7,7 @@
     <title>Drink Recipes</title>
     <link rel="stylesheet" href="static/styles.css">
 </head>
-<body>
+<!-- <body>
     <div class="container">
         <h2>Matched Drinks</h2>
         {% if matched_drinks %}
@@ -53,5 +53,70 @@
     <footer>
         <p>Have a suggestion? Please send us an email <a href="#">here</a>.</p>
     </footer>
+</body> -->
+<body>
+    <div class="container">
+        <h2>Matched Drinks</h2>
+        {% if sorted_matched_drinks %}
+            <ul>
+                {% for count, drinks in sorted_matched_drinks %}
+                    <li>
+                        <h3 class="toggle-drinks">Matched Ingredients: {{ count }}</h3>
+                        <ul id="drink-list" style="display: none;">
+                            {% for drink_info in drinks %}
+                                {% set drink = drink_info['drink'] %}
+                                <li>
+                                    <h4>{{ drink.title }}</h4>
+                                    <p class="sub-heading">Ingredients:</p>
+                                    <ul class="info ingredients">
+                                        {% for ingredient in drink.ingredients %}
+                                            <li>{{ ingredient }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    <p class="sub-heading">Instructions:</p>
+                                    <ul class="info instructions">
+                                        {% for instruction in drink.instructions %}
+                                            <li>{{ instruction }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    <p class="sub-heading">Garnishes:</p>
+                                    <ul class="info garnishes">
+                                        {% for garnish in drink.garnishes %}
+                                            <li>{{ garnish }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    <p class="sub-heading">Matched Ingredients:</p>
+                                    <ul class="info matched-ingredients">
+                                        {% for matched_ingredient in drink_info.matched_ingredients %}
+                                            <li>{{ matched_ingredient }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No drinks found with selected ingredients.</p>
+        {% endif %}
+    </div>
+    <footer>
+        <p>Have a suggestion? Please send us an email <a href="#">here</a>.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggles = document.querySelectorAll('.toggle-drinks');
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const drinksList = this.nextElementSibling;
+                    drinksList.style.display = drinksList.style.display === 'none' ? 'grid' : 'none';
+                });
+            });
+        });
+    </script>
 </body>
+</html>
+
+
 </html>

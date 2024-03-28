@@ -1,5 +1,6 @@
 import csv
 import json
+import re
 from flask import Flask, render_template, request
 
 with open('drink_data.json', 'r') as f: 
@@ -9,11 +10,6 @@ with open('drink_data.json', 'r') as f:
 #     csvReader = csv.reader(f)
 #     for row in csvReader:
 #         drinks.append(row)
-
-#print(drinks)
-#print(drinks[1][1]) # drink name
-# for i in range(1, len(drinks)):
-#     print(drinks[i][1])
 
 app = Flask(__name__)
 
@@ -26,7 +22,7 @@ def index():
     sodas = ['Club Soda', 'Coke', 'Ginger Ale', 'Ginger Beer', '7-Up', 'Sprite', 'Tonic Water']
     juices = ['Apple Juice', 'Cranberry Juice', 'Grapefruit Juice', 'Lemon Juice', 'Lime Juice', 'Orange Juice', 'Pineapple Juice', 'Tomato Juice']
     others = ['Celery Salt', 'Tabasco', 'Horseradish', 'Worcestershire Sauce', 'Soy Sauce', 'Sriracha', 'Bitters', 'Simple Syrup', 'Grenadine', 'Mint', 'Sugar', 'Salt', 'Pepper', 'Egg White', 'Cream', 'Coconut Milk', 'Milk', 'Coffee', 'Tea', 'Hot Chocolate', 'Honey', 'Maple Syrup', 'Agave Nectar', 'Lemonade', 'Sour Mix']
-    garnishes = ['Celery', 'Cherry', 'Lemon Wedge', 'Lime Wedge', 'Mint', 'Nutmeg', 'Olives', 'Orange Wedge']
+    garnishes = ['Celery', 'Cherry', 'Lemon Wedge', 'Lime Wedge', 'Mint', 'Nutmeg', 'Olives', 'Orange Wedge', 'Orange peel']
 
     return render_template('index.html', liquors=liquors, mixers=mixers, garnishes=garnishes)
 
@@ -38,56 +34,49 @@ def find_drinks():
     
     matched_drinks = get_matched_drinks(selected_liquors, selected_mixers, selected_garnishes)
     
-    return render_template('results.html', matched_drinks=matched_drinks)
+    return render_template('results.html', sorted_matched_drinks=matched_drinks)
+
+def preprocess(text):
+    return re.sub('[\W+]', '', text)
 
 def get_matched_drinks(selected_liquors, selected_mixers, selected_garnishes):
     matched_drinks = {}
-    i = j = k = 0
-
-
-    # for liquor in selected_liquors:
-    #     for drink_list in drink_data.values():
-    #         for drink in drink_list:
-                
-    #             if all(liquor.lower() in ingredient.lower() for ingredient in drink['ingredients']):
-    #                 matched_drinks[drink['title']] = drink
-    #             elif any(liquor.lower() in ingredient.lower() for ingredient in drink['ingredients']):
-    #                 matched_drinks[drink['title']] = drink
+    
     liquor_amount = len(selected_liquors)
     mixer_amount = len(selected_mixers)
     garnish_amount = len(selected_garnishes)
+
     for category, drinks in drink_data.items():
-        # if category == selected_liquors[i]:
-        #     for drink in drinks:
-        #         matched_drinks[drink['title']] = drink
-                
-        #     if i < len(selected_liquors) - 1:
-        #         i += 1
-        if mixer_amount == 0 and garnish_amount == 0:
-            if liquor_amount == 1:
-                if category == selected_liquors[0]:
+        if mixer_amount == 0 and garnish_amount == 0: # this is bad 
+            if liquor_amount == 1: # this is bad 
+                if category == selected_liquors[0]: # this is bad 
                     for drink in drinks:
                         matched_drinks[drink['title']] = drink
         else:
             for drink in drinks:
-                if any(ingredient.lower() in [liquor.lower() for liquor in selected_liquors] for ingredient in drink['ingredients']) or any(ingredient.lower() in [mixer.lower() for mixer in selected_mixers] for ingredient in drink['ingredients']) or any(ingredient.lower() in [garnish.lower() for garnish in selected_garnishes] for ingredient in drink['ingredients']):
-                    matched_drinks[drink['title']] = drink
+                match_count = 0
+                matched_ingredients = []
+                for ingredient in drink['ingredients']:
+                    processed_ingredient = preprocess(ingredient.lower())
+                    processed_mixers = [preprocess(selected_mixer.lower()) for selected_mixer in selected_mixers]
+                    processed_garnishes = [preprocess(selected_garnish.lower()) for selected_garnish in selected_garnishes]
 
+                    # TODO: fix ingredient matching (e.g., ingredient is "1/2 Shoe Gin" should just be "Gin" in matched ingredients)
+                    if any(selected_liquor.lower() in processed_ingredient for selected_liquor in selected_liquors) or any(selected_mixer in processed_ingredient for selected_mixer in processed_mixers) or any(selected_garnish in processed_ingredient for selected_garnish in processed_garnishes):
+                        match_count += 1
+                        matched_ingredients.append(ingredient)
+                if match_count > 0:
+                    if match_count not in matched_drinks:
+                        matched_drinks[match_count] = []
+                    matched_drinks[match_count].append({'drink': drink, 'matched_ingredients': matched_ingredients})
+    sorted_matched_drinks = [(k, v) for k, v in sorted(matched_drinks.items(), key=lambda item: item[0], reverse=True)]
+                # if any(ingredient.lower() in [liquor.lower() for liquor in selected_liquors] for ingredient in drink['ingredients']) or any(ingredient.lower() in [mixer.lower() for mixer in selected_mixers] for ingredient in drink['ingredients']) or any(ingredient.lower() in [garnish.lower() for garnish in selected_garnishes] for ingredient in drink['ingredients']):
+                #     matched_drinks[drink['title']] = drink
 
-        # else:
-        #     for drink in drinks:
-        #         if selected_mixers[j] in drink['ingredients']:
-        #             matched_drinks[drink['title']] = drink
-        #             if j < len(selected_mixers) - 1:
-        #                 j += 1
-        #         elif selected_garnishes[k] in drink['ingredients']:
-        #             matched_drinks[drink['title']] = drink
-        #             if k < len(selected_garnishes) - 1:
-        #                 k += 1
-
-
-    print(matched_drinks)
-    return matched_drinks
+    # print(matched_drinks)
+    print(sorted_matched_drinks)
+    # return matched_drinks
+    return sorted_matched_drinks
 
 if __name__ == "__main__":
     app.run(debug=True)
