@@ -21,7 +21,7 @@ def index():
     liquors = ['Beer', 'Bourbon', 'Brandy', 'Gin', 'Rum', 'Sake', 'Tequila', 'Vodka', 'Whiskey', 'Wine']
     liqueurs = ['Absinthe', 'Amaretto', 'Amaro', 'Aperol', 'Benedictine', 'Cappelletti', 'Campari', 'Chambord', 'Chartreuse', 'Crème de Cacao (chocolate)', 'Crème de Cassis (black currant)', 'Crème de Menthe (mint)', 'Crème de Mûre (blackberry)', 'Crème de Noyaux (almond)', 'Coffee Liqueur (Kahlua, Tia Maria)', 'Drambuie', 'Jägermeister', 'Galliano', 'Hpnotiq', 'Irish Cream (Baileys)', 'Licor 43', 'Limoncello', 'Maraschino Liqueur', 'Midori', 'Triple Sec', 'Pastis', 'Pernod', "Pimm's", 'Peppermint Schnapps', 'Cinnamon Schnapps', 'Peach Schnapps', 'Sloe Gin', 'St Germain', 'Suze']
     mixers = ['Bloody Mary Mix', 'Club Soda', 'Coconut Milk', 'Coke', 'Cranberry Juice', 'Cream', 'Ginger Ale', 'Ginger Beer', 'Grapefruit Juice', 'Grenadine',  'Lemon Juice', 'Lemon-Lime Soda', 'Lime Juice', 'Milk', 'Orange Juice', 'Pineapple Juice', 'Simple Syrup', 'Sour Mix', 'Tomato Juice', 'Tonic Water']
-    sodas = ['Club Soda', 'Coke', 'Ginger Ale', 'Ginger Beer', '7-Up', 'Sprite', 'Tonic Water']
+    sodas = ['Club Soda', 'Coke', 'Dewski', 'Ginger Ale', 'Ginger Beer', '7-Up', 'Sprite', 'Tonic Water']
     juices = ['Apple Juice', 'Cranberry Juice', 'Grapefruit Juice', 'Lemon Juice', 'Lime Juice', 'Orange Juice', 'Pineapple Juice', 'Tomato Juice']
     others = ['Celery Salt', 'Tabasco', 'Horseradish', 'Worcestershire Sauce', 'Soy Sauce', 'Sriracha', 'Bitters', 'Simple Syrup', 'Grenadine', 'Mint', 'Sugar', 'Salt', 'Pepper', 'Egg White', 'Cream', 'Coconut Milk', 'Milk', 'Coffee', 'Tea', 'Hot Chocolate', 'Honey', 'Maple Syrup', 'Agave Nectar', 'Lemonade', 'Sour Mix']
     garnishes = ['Celery', 'Cherry', 'Lemon Wedge', 'Lime Wedge', 'Mint', 'Nutmeg', 'Olives', 'Orange Wedge', 'Orange peel']
@@ -34,19 +34,22 @@ def find_drinks():
     selected_mixers = request.form.getlist('mixers')
     selected_garnishes = request.form.getlist('garnishes')
     
-    matched_drinks = get_matched_drinks(selected_liquors, selected_mixers, selected_garnishes)
+    ready_to_make_drinks, matched_drinks = get_matched_drinks(selected_liquors, selected_mixers, selected_garnishes)
     
-    return render_template('results.html', sorted_matched_drinks=matched_drinks)
+    return render_template('results.html', ready_to_make_drinks=ready_to_make_drinks, sorted_matched_drinks=matched_drinks)
 
 def preprocess(text):
     return re.sub('[\W+]', '', text)
 
 def get_matched_drinks(selected_liquors, selected_mixers, selected_garnishes):
     matched_drinks = {}
-    
+    ready_to_make_drinks = []
     liquor_amount = len(selected_liquors)
     mixer_amount = len(selected_mixers)
     garnish_amount = len(selected_garnishes)
+
+    processed_mixers = [preprocess(selected_mixer.lower()) for selected_mixer in selected_mixers]
+    processed_garnishes = [preprocess(selected_garnish.lower()) for selected_garnish in selected_garnishes]
 
     for category, drinks in drink_data.items():
         if mixer_amount == 0 and garnish_amount == 0: # this is bad 
@@ -58,27 +61,29 @@ def get_matched_drinks(selected_liquors, selected_mixers, selected_garnishes):
             for drink in drinks:
                 match_count = 0
                 matched_ingredients = []
-                for ingredient in drink['ingredients']:
-                    processed_ingredient = preprocess(ingredient.lower())
-                    processed_mixers = [preprocess(selected_mixer.lower()) for selected_mixer in selected_mixers]
-                    processed_garnishes = [preprocess(selected_garnish.lower()) for selected_garnish in selected_garnishes]
+                ingredients_size = len(drink['ingredients'])
+                if ingredients_size == 0: # clean data and remove this
+                    continue
+                else:
+                    for ingredient in drink['ingredients']:
+                        processed_ingredient = preprocess(ingredient.lower())
+                        
+                        # TODO: fix ingredient matching (e.g., ingredient is "1/2 Shoe Gin" should just be "Gin" in matched ingredients)
+                        # TODO: "ginger" matching with "Gin"
+                        
+                        if any(selected_liquor.lower() in processed_ingredient for selected_liquor in selected_liquors) or any(selected_mixer in processed_ingredient for selected_mixer in processed_mixers) or any(selected_garnish in processed_ingredient for selected_garnish in processed_garnishes):
+                            match_count += 1
+                            matched_ingredients.append(ingredient)
+                    if match_count == ingredients_size:
+                        ready_to_make_drinks.append({'drink': drink, 'matched_ingredients': matched_ingredients})
+                    elif match_count > 0:
+                        if match_count not in matched_drinks:
+                            matched_drinks[match_count] = []
+                        matched_drinks[match_count].append({'drink': drink, 'matched_ingredients': matched_ingredients})
 
-                    # TODO: fix ingredient matching (e.g., ingredient is "1/2 Shoe Gin" should just be "Gin" in matched ingredients)
-                    if any(selected_liquor.lower() in processed_ingredient for selected_liquor in selected_liquors) or any(selected_mixer in processed_ingredient for selected_mixer in processed_mixers) or any(selected_garnish in processed_ingredient for selected_garnish in processed_garnishes):
-                        match_count += 1
-                        matched_ingredients.append(ingredient)
-                if match_count > 0:
-                    if match_count not in matched_drinks:
-                        matched_drinks[match_count] = []
-                    matched_drinks[match_count].append({'drink': drink, 'matched_ingredients': matched_ingredients})
     sorted_matched_drinks = [(k, v) for k, v in sorted(matched_drinks.items(), key=lambda item: item[0], reverse=True)]
-                # if any(ingredient.lower() in [liquor.lower() for liquor in selected_liquors] for ingredient in drink['ingredients']) or any(ingredient.lower() in [mixer.lower() for mixer in selected_mixers] for ingredient in drink['ingredients']) or any(ingredient.lower() in [garnish.lower() for garnish in selected_garnishes] for ingredient in drink['ingredients']):
-                #     matched_drinks[drink['title']] = drink
 
-    # print(matched_drinks)
-    print(sorted_matched_drinks)
-    # return matched_drinks
-    return sorted_matched_drinks
+    return ready_to_make_drinks, sorted_matched_drinks
 
 if __name__ == "__main__":
     app.run(debug=True)
@@ -183,3 +188,4 @@ if __name__ == "__main__":
 #         'instructions': 'asdasd'
 #     }
 # }
+
