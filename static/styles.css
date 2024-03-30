@@ -27,11 +27,7 @@ body {
 	border-radius: 1em;
 }
 
-.main-buttons {
-	display: inline-block;
-	position: relative;
-	justify-content: space-between;
-}
+
 
 .drink-name {
 	font-size: 1.25em;
@@ -47,21 +43,42 @@ body {
 	padding-left: 2em;
 }
 
+nav {
+	float: right;
+}
 #app {
 	padding-top: 2em;
 	padding-left: 5em;
 	padding-right: 5em;
 }
 .form-inline {
-	display: flex;
+	display: inline-block;
 	flex-direction: row;
 	justify-content: space-between;
 }
 
+.main-buttons {
+	display: inline-block;
+	
+}
+
+
 .form-group {
-	display: block;
+	display: inline-block;
 	margin: 0 auto;
 	padding: 0;
+	align-items: center;
+}
+.alcohol {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 1em;
+}
+
+.next-clear-buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
 }
 /* .form-group {
 	display: inline-block;
@@ -83,6 +100,25 @@ body {
 	float: right;
 	margin: auto;
 }
+
+/* .info-ingredient-list {
+	list-style-type: none;
+}
+.info-ingredient-list .ingredient.matched-ingredient::before {
+	content: "\2714";
+	color: green;
+}
+.info-ingredient-list .ingredient.missing-ingredient::before {
+	content: ❌;
+} */
+.matched-ingredient {
+	background-color: rgba(32, 220, 32, 0.319);
+}
+
+.missing-ingredient {
+	background-color: rgba(255, 6, 6, 0.25);
+}
+
 footer {
 	bottom: 0;
 	text-align: center;

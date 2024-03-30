@@ -61,6 +61,7 @@ def get_matched_drinks(selected_liquors, selected_mixers, selected_garnishes):
             for drink in drinks:
                 match_count = 0
                 matched_ingredients = []
+                missing_ingredients = []
                 ingredients_size = len(drink['ingredients'])
                 if ingredients_size == 0: # clean data and remove this
                     continue
@@ -74,12 +75,15 @@ def get_matched_drinks(selected_liquors, selected_mixers, selected_garnishes):
                         if any(selected_liquor.lower() in processed_ingredient for selected_liquor in selected_liquors) or any(selected_mixer in processed_ingredient for selected_mixer in processed_mixers) or any(selected_garnish in processed_ingredient for selected_garnish in processed_garnishes):
                             match_count += 1
                             matched_ingredients.append(ingredient)
+                        else:
+                            missing_ingredients.append(ingredient)
+                    
                     if match_count == ingredients_size:
                         ready_to_make_drinks.append({'drink': drink, 'matched_ingredients': matched_ingredients})
                     elif match_count > 0:
                         if match_count not in matched_drinks:
                             matched_drinks[match_count] = []
-                        matched_drinks[match_count].append({'drink': drink, 'matched_ingredients': matched_ingredients})
+                        matched_drinks[match_count].append({'drink': drink, 'matched_ingredients': matched_ingredients, 'missing_ingredients': missing_ingredients})
 
     sorted_matched_drinks = [(k, v) for k, v in sorted(matched_drinks.items(), key=lambda item: item[0], reverse=True)]
 

@@ -37,19 +37,25 @@
 <body>
     <header>
         <h1>Drink Recipes</h1>
-        
+        <nav>
+            <a href="/browse-recipes">Browse Recipes</a>
+            <a href="/about">About</a>
+            <a href="/sign-up">Signup</a>
+        </nav>
     </header>
     <div id="app">
-        
-        
         <form action="/find_drinks" method="post" class="form-inline">
             <div class="form-group alcohol">
-                <h2>Select Alcohol</h2>
-                {% for liquor in liquors %}
-                    <label><input type="checkbox" name="liquors" value="{{ liquor }}"> {{ liquor }}</label><br>
-                {% endfor %}
-                <button class="button button-primary" type="button" onclick="clearSelections('alcohol')">Clear</button>
-                <button class="button button-primary" type="button" onclick="showMixers()">Next</button>
+                <div>
+                    <h2>Select Alcohol</h2>
+                    {% for liquor in liquors %}
+                        <label><input type="checkbox" name="liquors" value="{{ liquor }}"> {{ liquor }}</label><br>
+                    {% endfor %}
+                </div>
+                <div class="next-clear-buttons">
+                    <button class="button button-primary" type="button" onclick="clearSelections('alcohol')">Clear</button>
+                    <button class="button button-primary next" type="button" onclick="showMixers()">Next</button>
+                </div>
             </div>
             <div class="form-group mixers" style="display: none;">
                 <h2>Select Mixers</h2>
@@ -58,7 +64,7 @@
                 {% endfor %}
                 <button class="button button-primary" type="button" onclick="showAlcohols()">Back</button>
                 <button class="button button-primary" type="button" onclick="clearSelections('mixers')">Clear</button>
-                <button class="button button-primary" type="button" onclick="showGarnishes()">Next</button>
+                <button class="button button-primary next" type="button" onclick="showGarnishes()">Next</button>
             </div>
             <div class="form-group garnishes" style="display: none;">
                 <h2>Select Garnishes</h2>
@@ -81,7 +87,7 @@
         function showAlcohols() {
             document.querySelector('.mixers').style.display = 'none';
             document.querySelector('.garnishes').style.display = 'none';
-            document.querySelector('.alcohol').style.display = 'block';
+            document.querySelector('.alcohol').style.display = 'grid';
         }
         function showMixers() {
             document.querySelector('.alcohol').style.display = 'none';
