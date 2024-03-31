@@ -53,26 +53,39 @@
                     {% endfor %}
                 </div>
                 <div class="next-clear-buttons">
-                    <button class="button button-primary" type="button" onclick="clearSelections('alcohol')">Clear</button>
+                    <!-- <button class="button button-primary" type="button" onclick="clearSelections('alcohol')">Clear</button> -->
                     <button class="button button-primary next" type="button" onclick="showMixers()">Next</button>
+                    
                 </div>
             </div>
             <div class="form-group mixers" style="display: none;">
-                <h2>Select Mixers</h2>
-                {% for mixer in mixers %}
-                    <label><input type="checkbox" name="mixers" value="{{ mixer }}"> {{ mixer }}</label><br>
-                {% endfor %}
                 <button class="button button-primary" type="button" onclick="showAlcohols()">Back</button>
-                <button class="button button-primary" type="button" onclick="clearSelections('mixers')">Clear</button>
-                <button class="button button-primary next" type="button" onclick="showGarnishes()">Next</button>
+                <div>
+                    <h2>Select Mixers</h2>
+                    {% for mixer in mixers %}
+                        <label><input type="checkbox" name="mixers" value="{{ mixer }}"> {{ mixer }}</label><br>
+                    {% endfor %}
+                </div>
+                <div class="next-clear-buttons">
+                    
+                    <button class="button button-primary" type="button" onclick="clearSelections('mixers')">Clear</button>
+                    <button class="button button-primary next" type="button" onclick="showGarnishes()">Next</button>
+                </div>
+
             </div>
             <div class="form-group garnishes" style="display: none;">
-                <h2>Select Garnishes</h2>
-                {% for garnish in garnishes %}
-                    <label><input type="checkbox" name="garnishes" value="{{ garnish }}"> {{ garnish }}</label><br>
-                {% endfor %}
                 <button class="button button-primary" type="button" onclick="showMixers()">Back</button>
-                <button class="button button-primary" type="button" onclick="clearSelections('garnishes')">Clear</button>                
+
+                <div>
+                    <h2>Select Garnishes</h2>
+                    {% for garnish in garnishes %}
+                        <label><input type="checkbox" name="garnishes" value="{{ garnish }}"> {{ garnish }}</label><br>
+                    {% endfor %}
+                </div>
+                <div class="next-clear-buttons">
+                    <button class="button button-primary" type="button" onclick="clearSelections('garnishes')">Clear</button>                
+
+                </div>
             </div>
             <div class="main-buttons">
                 <button class="button button-primary" type="button" onclick="clearAllSelections()">Clear all</button>
@@ -91,12 +104,12 @@
         }
         function showMixers() {
             document.querySelector('.alcohol').style.display = 'none';
-            document.querySelector('.mixers').style.display = 'block';
+            document.querySelector('.mixers').style.display = 'grid';
             document.querySelector('.garnishes').style.display = 'none';
         }
         function showGarnishes() {
             document.querySelector('.mixers').style.display = 'none';
-            document.querySelector('.garnishes').style.display = 'block';
+            document.querySelector('.garnishes').style.display = 'grid';
         }
         function clearSelections(formGroupName) {
             const formGroup = document.querySelector('.' + formGroupName);
