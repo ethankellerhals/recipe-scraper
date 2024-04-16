@@ -1,17 +1,13 @@
-import csv
 import json
 import re
 from flask import Flask, render_template, request
 
 # https://en.wikibooks.org/wiki/Bartending/Cocktails
 
+# add Segrams
+# The Master's drink  
 with open('drink_data.json', 'r') as f: 
     drink_data = json.load(f)
-# drinks = []
-# with open('all_drinks.csv', newline='', encoding='utf-8-sig') as f:
-#     csvReader = csv.reader(f)
-#     for row in csvReader:
-#         drinks.append(row)
 
 app = Flask(__name__)
 
