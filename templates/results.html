@@ -57,6 +57,9 @@
 <body>
     <div class="container">
         <h2>Matched Drinks</h2>
+        <div class="toggle-units">
+            <button class="change-units" id="oz-btn">oz</button><button class="change-units" id="ml-btn">ml</button>
+        </div>
         {% if ready_to_make_drinks %}
         <div id="drinks-ready-to-make">
             <h3>Drinks ready to make:</h3>
@@ -75,6 +78,15 @@
                             <li>No ingredients available.</li>
                         {% endif %}
                     </ul>
+                    <p class="sub-heading">Measurements:</p>
+                    <ul class="info measurements">
+                        {% if drink_entry['drink']['measurements'] %}
+                            {% for measurement in drink_entry['drink']['measurements'] %}
+                                <li>{{ measurement }}</li>
+                            {% endfor %}
+                        {% else %}
+                            <li>No measurements available.</li>
+                        {% endif %}
                     <p class="sub-heading">Instructions:</p>
                     <ul class="info instructions">
                         {% if drink_entry['drink']['instructions'] %}
@@ -114,30 +126,53 @@
                                 <li class="drink">
                                     <h4 class="drink-name">{{ drink.title }}</h4>
                                     <p class="sub-heading">Ingredients:</p>
-                                    <ul class="info ingredients">
-                                        {% for ingredient in drink.ingredients %}
-                                            <li class="info-ingredient-list">
-                                                {% if ingredient in drink_info.matched_ingredients %}
-                                                    <span class="ingredient matched-ingredient">{{ ingredient }}</span>
-                                                {% else %}
-                                                    <span class="ingredient missing-ingredient">{{ ingredient }}</span>
-                                                {% endif %}
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                    <p class="sub-heading">Instructions:</p>
-                                    <ul class="info instructions">
-                                        {% for instruction in drink.instructions %}
-                                            <li>{{ instruction }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                    <p class="sub-heading">Garnishes:</p>
-                                    <ul class="info garnishes">
-                                        {% for garnish in drink.garnishes %}
-                                            <li>{{ garnish }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                    <p class="sub-heading">Matched Ingredients:</p>
+                                    <table class="ingredient-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Ingredient</th>
+                                                <th>Measurement</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for index in range(drink.ingredients|length) %}
+                                                <tr>
+                                                    {% set ingredient = drink.ingredients[index] %}
+                                                    {% set measure = drink.measurements[index] %}
+                                                    <td>
+                                                        {% if ingredient in drink_info.matched_ingredients %}
+                                                            <span class="ingredient matched-ingredient">{{ ingredient }}</span>
+                                                        {% else %}
+                                                            <span class="ingredient missing-ingredient">{{ ingredient }}</span>
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {% if ingredient in drink_info.matched_ingredients %}
+                                                            <span class="ingredient matched-ingredient">{{ measure }}</span>
+                                                        {% else %}
+                                                            <span class="ingredient missing-ingredient">{{ measure }}</span>
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    {% if drink.instructions %}
+                                        <p class="sub-heading">Instructions:</p>
+                                        <ul class="info instructions">
+                                            {% for instruction in drink.instructions %}
+                                                <li>{{ instruction }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                    {% if drink.garnishes %}
+                                        <p class="sub-heading">Garnishes:</p>
+                                        <ul class="info garnishes">
+                                            {% for garnish in drink.garnishes %}
+                                                <li>{{ garnish }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                    <!-- <p class="sub-heading">Matched Ingredients:</p>
                                     <ul class="info matched-ingredients">
                                         {% for matched_ingredient in drink_info.matched_ingredients %}
                                             <li>{{ matched_ingredient }}</li>
@@ -148,7 +183,7 @@
                                         {% for missing_ingredient in drink_info.missing_ingredients %}
                                             <li>{{ missing_ingredient }}</li>
                                         {% endfor %}
-                                    </ul>
+                                    </ul> -->
                                 </li>
                             {% endfor %}
                         </ul>
@@ -173,6 +208,39 @@
                 });
             });
         });
+        // function parseFractionalStrings(str) {
+        //     var parts = str.split(' ');
+        //     var sum = 0;
+        //     pars.forEach(function(part) {
+        //         var fraction = part.split('/');
+        //         if (fraction.length === 2) {
+        //             sum += parseFloat(fraction[0]) / parseFloat(fraction[1]);
+        //         } else {
+        //             sum += parseFloat(part);
+        //         }
+        //     });
+        //     return sum;
+        // }
+        // function convertMeasurements(unit) {
+        //     var measureElements = document.querySelectorAll('.measurement');
+
+        //     measurementElements.forEach(function(element) {
+        //         // var measurementValue = measurement.innerText;
+        //         // var convertedMeasurement = unit === 'oz' ? measurementValue * 0.033814 : measurementValue * 29.5735;
+        //         // measurement.innerText = convertedMeasurement;
+        //         var originalMeasurementStr = element.textContent;
+        //         var originalUnit = originalMeasurementStr.split(' ')[1];
+        //         var originalMeasurement = parseFractionalStrings(originalMeasurementStr.split(' ')[0]);
+
+        //         var convertedMeasurement;
+        //         switch (unit) {
+        //             case 'oz':
+        //                 if (originalUnit === 'pint') {
+
+        //                 }
+        //         }
+        //     });
+        // }
     </script>
 </body>
 </html>

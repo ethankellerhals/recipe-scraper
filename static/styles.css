@@ -26,7 +26,7 @@ footer {
 	/* text-align: center; */	
 }
 
-button {
+/* button {
 	padding: 10px 15px;
 	background-color: #007BFF;
 	color: white;
@@ -35,7 +35,7 @@ button {
 	height: 50%;
 	border-radius: 50%;
 	cursor: pointer;
-}
+} */
 /* -------------------- index.html -------------------- */
 #app {
 	display: flex;
@@ -48,17 +48,54 @@ label {
 	text-align: center;
 	flex: 1;
 }
-.form-group {
+.form-inline {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
 	align-items: center;
-	width: 100%;
+	justify-content: center;
+	width: 75%;
 }
-.buttons-container {
+.form-group {
+	display: inline;
+}
+
+.grid-container {
+	/* display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center; */
+	display: flex;
+	position: relative;	
+}
+.sub-heading {
+	text-align: center;
+}
+.column {	
+	padding: 2em;
+}
+.btns {
+	/* display: flex;
+	flex-direction: column; */
+	position: relative;
+	width: 10%;
+}
+.checkboxes {
+	width: 75%;
+	position: relative;
+	overflow-y: auto;
+}
+.ingredients-checkboxes {
+	max-height: 600px;
+	overflow-y: auto;
+}
+/* .buttons-container {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
 	padding: 10px 0;
+} */
+.main-buttons {
+	display: flex;
+	margin-top: 1em;
 }
 
 /* .form-group {
@@ -134,14 +171,10 @@ label {
 .sub-heading {
 	padding-left: 2em;
 }
-
-
-
-
-
-
-
-
+.change-units {
+	display: flex;
+	justify-content: space-between;
+}
 
 /* .form-group {
 	display: inline-block;
@@ -164,6 +197,16 @@ label {
 	margin: auto;
 }
 
+.ingredient-table {
+	td {
+		padding: 0.5em;
+	}
+}
+
+.topnav {
+	float: right;
+	
+}
 /* .info-ingredient-list {
 	list-style-type: none;
 }

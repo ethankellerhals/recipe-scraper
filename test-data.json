@@ -1,0 +1,197 @@
+{
+    "Beer": [
+        {
+            "title": "Black and Tan",
+            "ingredients": [
+                "Guinness Stout",
+                "Bass Ale"
+            ],
+            "measurements": [
+                "1/2 pint",
+                "1/2 pint"
+            ],
+            "instructions": ["Layer stout over ale."],
+            "garnishes": []
+        },
+        {
+            "title": "Boilermaker",
+            "ingredients": [
+                "American Pilsner",
+                "Tennessee Whiskey (or Bourbon)"
+            ],
+            "measurements": [
+                "1 pint",
+                "1 shot"
+            ],
+            "instructions": [
+                "Generally, the shot of whiskey and beer are served separately to the customer. There is more than one way to consume this drink; one can: ",
+                "Shoot the whiskey and then drink the beer",
+                "Pour the whiskey in the beer",
+                "Take the whiskey as a 'depth shot,' that is, drop the shot glass into the beer, causing the beer to foam up, and then chug the result. Note that this is not exactly the safest procedure, especially after a few drinks; if the shot glass breaks when dropped, it may go unnoticed until the glass shards hit the throat."
+            ],
+            "garnishes": []
+        },
+        {
+            "title": "Flaming Dr. Pepper",
+            "ingredients": [
+                "Amaretto",
+                "Bacardi 151 or Everclear",
+                "Beer"
+            ],
+            "measurements": [
+                "3/4 shot",
+                "1/4 shot",
+                "1/2 pint"
+            ],
+            "instructions": [
+                "In a single shot glass, delicately pour the 1/4 shot of Bacardi on top of the 3/4 shot of Amaretto being careful to avoid mixing the 2 ingredients together.",
+                "When the consumer is ready, use a match to ignite the Bacardi in the shot glass and drop the shot into the half pint of beer.",
+                "The drink should be quickly consumed immediately following the dropping of the shot into the beer."
+            ],
+            "garnishes": [],
+            "notes": ["Use caution when making flammable cocktails as the flame can often be invisible."]
+        },
+        {
+            "title": "Flaming Engineer",
+            "ingredients": [
+                "Molson Canadian beer",
+                "Amaretto",
+                "Canadian Club whiskey",
+                "orange juice"
+            ],
+            "measurements": [
+                "3/4 pint",
+                "1 1/2 oz.",
+                "1 1/2 oz."
+            ],
+            "instructions": [
+                "Pour the beer into a beer mug",
+                "Add the amaretto and the whiskey",
+                "Fill with orange juice"
+            ],
+            "garnishes": []
+        },
+        {
+            "title": "Irish Car Bomb",
+            "ingredients": [
+                "Guinness stout",
+                "Jameson Irish whiskey",
+                "Baileys Irish Cream"
+            ],
+            "measurements": [
+                "1/2 pint",
+                "1 oz",
+                "1 oz"
+            ],
+            "instructions": [
+                "Pour Guinness into the pint glass.",
+                "Pour Baileys into the shot glass and, without mixing, pour Jameson into the shot glass.",
+                "When ready to drink, drop the shot glass into the pint, and be mindful of spilling."
+            ],
+            "garnishes": [],
+            "notes": [
+                "When the Baileys mixes with the beer it will begin to curdle very quickly, requiring the drink to be consumed promptly.",
+                "It is sometimes considered improper to order this drink in an Irish establishment. Some United States bars refuse to sell it, and it is not sold in Ireland, where it has been suggested that it is the equivalent of ordering a '9/11 ice-cream sundae'."
+            ]
+        }
+    ],
+    "Bourbon": [
+        {
+            "title": "American Revolution",
+            "ingredients": [
+                "Gin",
+                "Bourbon",
+                "Bitters",
+                "Orange peel"
+            ],
+            "measurements": [
+                "1.5 oz",
+                "1.5 oz",
+                "2 dashes"
+            ],
+            "instructions": [
+                "Muddle orange peel in 1 oz of the gin",
+                "Add the remainder of the gin, the bourbon, the bitters, and ice to the glass",
+                "Stir 30 seconds (until aromatics of the liquors are awakened)",
+                "Strain into Old Fashioned glass and fill glass with ice",
+                "Garnish with sour cherries"
+            ],
+            "garnishes": ["Sour cherries, do not use maraschino if you can get sour cherries."]
+        },
+        {
+            "title": "Boilermaker",
+            "ingredients": [
+                "American Pilsner",
+                "Tennessee Whiskey (or Bourbon)"
+            ],
+            "measurements": [
+                "1 pint",
+                "1 shot"
+            ],
+            "instructions": [],
+            "garnishes": []
+        },
+        {
+            "title": "Eccentric Elmer",
+            "ingredients": [
+                "Bourbon",
+                "Triple sec",
+                "Cranberry cocktail",
+                "Angostura bitters"
+            ],
+            "measurements": [
+                "1 oz",
+                "1/2 oz",
+                "3 oz",
+                "1 dash"
+            ],
+            "instructions": [
+                "Fill a cocktail shaker halfway with ice",
+                "Add bourbon, triple sec, bitters, and cranberry cocktail to shaker",
+                "Shake well",
+                "Put a few ice cubes into an old-fashioned glass",
+                "Strain cocktail into glass",
+                "Garnish with a lime wedge"
+            ],
+            "garnishes": ["Lime wedge"]
+        },
+        {
+            "title": "Mint Julep",
+            "ingredients": [
+                "Bourbon whiskey",
+                "Mint",
+                "Sugar"
+            ],
+            "measurements": [
+                "4 oz",
+                "4-6 sprigs",
+                "1 tsp"
+            ],
+            "instructions": [
+                "Crush the sugar with the sprigs of mint in the bottom of the glass.",
+                "Fill the glass with crushed ice and then add the bourbon. Feel free to add more bourbon to fill the glass, if necessary.",
+                "Garnish with remaining mint.",
+                "Insert a straw, cutting it to no more than 2 inches (5 cm) above the rim of the glass (allows one to smell the julep while drinking).",
+                "Serve."
+            ],
+            "garnishes": ["Mint leaves"]
+        },
+        {
+            "title": "Nixon",
+            "ingredients": [
+                "Bourbon whiskey",
+                "Sloe gin",
+                "Peach Bitters"
+            ],
+            "measurements": [
+                "1/2",
+                "1/2",
+                "2 dashes"
+            ],
+            "instructions": [
+                "Stir and serve on the rocks, decorated with a slice of fresh peach and a cherry."
+            ],
+            "garnishes": ["Cherry"]
+        }
+    ]
+}

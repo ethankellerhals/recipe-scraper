@@ -3,8 +3,12 @@
         {
             "title": "Black and Tan",
             "ingredients": [
-                "1/2 pint Guinness Stout",
-                "1/2 pint Bass Ale"
+                "Guinness Stout",
+                "Bass Ale"
+            ],
+            "measurements": [
+                "1/2 pint",
+                "1/2 pint"
             ],
             "instructions": ["Layer stout over ale."],
             "garnishes": []
@@ -12,8 +16,12 @@
         {
             "title": "Boilermaker",
             "ingredients": [
-                "1 pint American Pilsner",
-                "1 shot Tennessee Whiskey (or Bourbon)"
+                "American Pilsner",
+                "Tennessee Whiskey (or Bourbon)"
+            ],
+            "measurements": [
+                "1 pint",
+                "1 shot"
             ],
             "instructions": [
                 "Generally, the shot of whiskey and beer are served separately to the customer. There is more than one way to consume this drink; one can: ",
@@ -26,9 +34,14 @@
         {
             "title": "Flaming Dr. Pepper",
             "ingredients": [
-                "3/4 shot Amaretto",
-                "1/4 shot Bacardi 151 or Everclear",
-                "1/2 pint Beer"
+                "Amaretto",
+                "Bacardi 151 or Everclear",
+                "Beer"
+            ],
+            "measurements": [
+                "3/4 shot",
+                "1/4 shot",
+                "1/2 pint"
             ],
             "instructions": [
                 "In a single shot glass, delicately pour the 1/4 shot of Bacardi on top of the 3/4 shot of Amaretto being careful to avoid mixing the 2 ingredients together.",
@@ -41,10 +54,15 @@
         {
             "title": "Flaming Engineer",
             "ingredients": [
-                "3/4 pint Molson Canadian beer",
-                "1 1/2 oz. amaretto",
-                "1 1/2 oz. Canadian Club whiskey",
+                "Molson Canadian beer",
+                "Amaretto",
+                "Canadian Club whiskey",
                 "orange juice"
+            ],
+            "measurements": [
+                "3/4 pint",
+                "1 1/2 oz.",
+                "1 1/2 oz."
             ],
             "instructions": [
                 "Pour the beer into a beer mug",
@@ -56,9 +74,14 @@
         {
             "title": "Irish Car Bomb",
             "ingredients": [
-                "\u00bd pint of Guinness stout",
-                "1\u00a0oz Jameson Irish whiskey",
-                "1\u00a0oz Baileys Irish Cream"
+                "Guinness stout",
+                "Jameson Irish whiskey",
+                "Baileys Irish Cream"
+            ],
+            "measurements": [
+                "1/2 pint",
+                "1 oz",
+                "1 oz"
             ],
             "instructions": [
                 "Pour Guinness into the pint glass.",
@@ -76,10 +99,15 @@
         {
             "title": "American Revolution",
             "ingredients": [
-                "Gin, 1.5 oz",
-                "Bourbon, 1.5 oz",
-                "Bitters, 2 dashes",
+                "Gin",
+                "Bourbon",
+                "Bitters",
                 "Orange peel"
+            ],
+            "measurements": [
+                "1.5 oz",
+                "1.5 oz",
+                "2 dashes"
             ],
             "instructions": [
                 "Muddle orange peel in 1 oz of the gin",
@@ -93,8 +121,12 @@
         {
             "title": "Boilermaker",
             "ingredients": [
-                "1 pint American Pilsner",
-                "1 shot Tennessee Whiskey (or Bourbon)"
+                "American Pilsner",
+                "Tennessee Whiskey (or Bourbon)"
+            ],
+            "measurements": [
+                "1 pint",
+                "1 shot"
             ],
             "instructions": [],
             "garnishes": []
@@ -102,10 +134,16 @@
         {
             "title": "Eccentric Elmer",
             "ingredients": [
-                "1 oz bourbon",
-                "1/2 oz triple sec",
-                "3 oz cranberry cocktail",
-                "dash angostura bitters"
+                "Bourbon",
+                "Triple sec",
+                "Cranberry cocktail",
+                "Angostura bitters"
+            ],
+            "measurements": [
+                "1 oz",
+                "1/2 oz",
+                "3 oz",
+                "1 dash"
             ],
             "instructions": [
                 "Fill a cocktail shaker halfway with ice",
@@ -120,9 +158,14 @@
         {
             "title": "Mint Julep",
             "ingredients": [
-                "4 oz bourbon whiskey",
-                "4-6 sprigs of mint",
-                "1 tsp sugar"
+                "Bourbon whiskey",
+                "Mint",
+                "Sugar"
+            ],
+            "measurements": [
+                "4 oz",
+                "4-6 sprigs",
+                "1 tsp"
             ],
             "instructions": [
                 "Crush the sugar with the sprigs of mint in the bottom of the glass.",
@@ -136,9 +179,14 @@
         {
             "title": "Nixon",
             "ingredients": [
-                "1/2 Bourbon whiskey",
-                "1/2 Sloe gin",
-                "2 dashes Peach Bitters"
+                "Bourbon whiskey",
+                "Sloe gin",
+                "Peach Bitters"
+            ],
+            "measurements": [
+                "1/2",
+                "1/2",
+                "2 dashes"
             ],
             "instructions": [
                 "Stir and serve on the rocks, decorated with a slice of fresh peach and a cherry."
@@ -150,9 +198,14 @@
         {
             "title": "Alexander",
             "ingredients": [
-                "1/2 shot Gin or Brandy",
-                "1/2 shot Heavy cream (or half-and-half)",
-                "1/2 shot White creme de cacao"
+                "Gin or Brandy",
+                "Heavy cream (or half-and-half)",
+                "White creme de cacao"
+            ],
+            "measurements": [
+                "1/2 shot",
+                "1/2 shot",
+                "1/2 shot"
             ],
             "instructions": [
                 "Combine ingredients over ice",
@@ -166,9 +219,12 @@
         {
             "title": "Brandy and Coke",
             "ingredients": [
-                "1 shot brandy (50 ml)",
+                "Brandy",
                 "Coke",
                 "Ice"
+            ],
+            "measurements": [
+                "1 shot"
             ],
             "instructions": ["Pour Brandy in a high ball glass. Fill glass 3/4 with ice. Top up with Cola drink. Enjoy with braaivleis."],
             "garnishes": []
@@ -176,10 +232,16 @@
         {
             "title": "Sazerac",
             "ingredients": [
-                "2 parts Brandy or Rye whiskey",
-                "1 dash Peychaud's bitters",
-                "1 tsp. simple syrup",
-                "1 tsp. absinthe"
+                "Brandy or Rye whiskey",
+                "Peychaud's bitters",
+                "Simple syrup",
+                "Absinthe"
+            ],
+            "measurements": [
+                "2 parts",
+                "1 dash",
+                "1 tsp",
+                "1 tsp"
             ],
             "instructions": [
                 "Coat the inside of the glass with a film of absinthe.",
@@ -198,6 +260,11 @@
                 "Triple sec",
                 "Lemon Juice"
             ],
+            "measurements": [
+                "2 oz",
+                "3/4 oz",
+                "3/4 oz"
+            ],
             "instructions": [
                 "(optional) Apply sugar rim to cocktail glass",
                 "Combine ingredients over ice",
@@ -214,13 +281,22 @@
         {
             "title": "Adios Motherfucker",
             "ingredients": [
-                "1/2 oz. vodka",
-                "1/2 oz. rum",
-                "1/2 oz. tequila",
-                "1/2 oz. gin",
-                "1/2 oz. blue Cura\u00e7ao",
-                "2 oz. of sour mix",
-                "2 oz. 7-Up or ginger ale"
+                "Vodka",
+                "Rum",
+                "Tequila",
+                "Gin",
+                "Blue Cura\u00e7ao",
+                "Sour mix",
+                "7-Up or ginger ale"
+            ],
+            "measurements": [
+                "1/2 oz",
+                "1/2 oz",
+                "1/2 oz",
+                "1/2 oz",
+                "1/2 oz",
+                "2 oz",
+                "2 oz"
             ],
             "instructions": [],
             "garnishes": []
@@ -228,9 +304,14 @@
         {
             "title": "Alexander",
             "ingredients": [
-                "1/2 shot Gin or Brandy",
-                "1/2 shot Heavy cream (or half-and-half)",
-                "1/2 shot White creme de cacao"
+                "Gin or Brandy",
+                "Heavy cream (or half-and-half)",
+                "White creme de cacao"
+            ],
+            "measurements": [
+                "1/2 shot",
+                "1/2 shot",
+                "1/2 shot"
             ],
             "instructions": [
                 "Combine ingredients over ice",
@@ -244,10 +325,16 @@
         {
             "title": "Bronx Cocktail",
             "ingredients": [
-                "3.0 cl (6 parts) Gin",
-                "1.5 cl (3 parts) Sweet Red Vermouth",
-                "1.0 cl (2 part) Dry Vermouth",
-                "1.5 cl (3 parts) Orange juice"
+                "Gin",
+                "Sweet Red Vermouth",
+                "Dry Vermouth",
+                "Orange juice"
+            ],
+            "measurements": [
+                "1 oz (6 parts)",
+                "1/2 oz (3 parts)",
+                "1/3 oz (2 part)",
+                "1/2 oz (3 parts)"
             ],
             "instructions": [
                 "\u2191 Burke, Harman Burney. Burke's complete Cocktail & Drinking Recipes, 1934. Retrieved from cocktailtimes.com on January 18, 2007."
@@ -257,10 +344,15 @@
         {
             "title": "American Revolution",
             "ingredients": [
-                "Gin, 1.5 oz",
-                "Bourbon, 1.5 oz",
-                "Bitters, 2 dashes",
+                "Gin",
+                "Bourbon",
+                "Bitters",
                 "Orange peel"
+            ],
+            "measurements": [
+                "1.5 oz",
+                "1.5 oz",
+                "2 dashes"
             ],
             "instructions": [],
             "garnishes": []
@@ -280,10 +372,16 @@
         {
             "title": "Fourth Estate Cocktail",
             "ingredients": [
-                "1 part Gin",
-                "1 part Dry Vermouth",
-                "1 part Sweet Vermouth",
-                "1 dash Absinthe"
+                "Gin",
+                "Dry Vermouth",
+                "Sweet Vermouth",
+                "Absinthe"
+            ],
+            "measurements": [
+                "1 part",
+                "1 part",
+                "1 part",
+                "1 dash"
             ],
             "instructions": [],
             "garnishes": []
@@ -291,10 +389,15 @@
         {
             "title": "French 75",
             "ingredients": [
-                "1\u00bd ozs. (40 ml) gin",
-                "2 tsp. caster (superfine) sugar",
-                "1 tbs. lemon juice",
+                "Gin",
+                "Caster (superfine) sugar",
+                "Lemon juice",
                 "Champagne"
+            ],
+            "measurements": [
+                "1/2 oz",
+                "2 tsp",
+                "1 tbs"
             ],
             "instructions": [],
             "garnishes": []
@@ -309,8 +412,13 @@
             "title": "Gin and Tonic",
             "ingredients": [
                 "Tonic water",
-                "1 1/2 oz. Gin (or 1 jigger)",
-                "1 Lime wedge (or lemon wedge)"
+                "Gin",
+                "Lime wedge (or lemon wedge)"
+            ],
+            "measurements":[
+                "fill",
+                "1.5 oz (or 1 jigger)",
+                "1"
             ],
             "instructions": [
                 "Many different ratios of the gin and tonic cocktail exist. The most common ratios are 1 part gin to 3 parts tonic and 1 part gin to 1 part tonic. A good gin and tonic, however, is just in the middle of those ratios.",
@@ -327,8 +435,12 @@
         {
             "title": "Martini",
             "ingredients": [
-                "3 oz. (5.5 cl) Gin",
-                "1/2 oz. (1.5 cl) Dry (white/blanc) vermouth (preferably Noilly Prat or Dolin, alternately Martini & Rossi) with ice and water"
+                "Gin",
+                "Dry (white/blanc) vermouth (preferably Noilly Prat or Dolin, alternately Martini & Rossi) with ice and water"
+            ],
+            "measurements": [
+                "3 oz",
+                "1/2 oz"
             ],
             "instructions": [
                 "Fill a martini glass with ice and water, set aside.",
@@ -346,9 +458,14 @@
         {
             "title": "Nixon",
             "ingredients": [
-                "1/2 Bourbon whiskey",
-                "1/2 Sloe gin",
-                "2 dashes Peach Bitters"
+                "Bourbon whiskey",
+                "Sloe gin",
+                "Peach Bitters"
+            ],
+            "measurements": [
+                "1/2",
+                "1/2",
+                "2 dashes"
             ],
             "instructions": [],
             "garnishes": []
@@ -362,10 +479,15 @@
         {
             "title": "Saketini",
             "ingredients": [
-                "1.5 oz. gin",
-                "0.5 oz. sake",
-                "1 green olive",
-                "ice"
+                "Gin",
+                "Sake",
+                "Green olive",
+                "Ice"
+            ],
+            "measurements":[
+                "1.5 oz",
+                "0.5 oz",
+                "1"
             ],
             "instructions": [],
             "garnishes": []
@@ -379,10 +501,16 @@
         {
             "title": "Three Dollar Shoes",
             "ingredients": [
-                "3 parts Seagram's brand Gin",
-                "2 parts Bombay Sapphire brand Gin",
-                "2 parts (or to taste) chilled margarita mixer",
-                "1 part Grenadine"
+                "Seagram's brand Gin",
+                "Bombay Sapphire brand Gin",
+                "Chilled margarita mixer",
+                "Grenadine"
+            ],
+            "measurements": [
+                "3 parts",
+                "2 parts",
+                "2 parts (or to taste)",
+                "1 part"
             ],
             "instructions": [],
             "garnishes": []
@@ -392,13 +520,22 @@
         {
             "title": "Adios Motherfucker",
             "ingredients": [
-                "1/2 oz. vodka",
-                "1/2 oz. rum",
-                "1/2 oz. tequila",
-                "1/2 oz. gin",
-                "1/2 oz. blue Cura\u00e7ao",
-                "2 oz. of sour mix",
-                "2 oz. 7-Up or ginger ale"
+                "Vodka",
+                "Rum",
+                "Tequila",
+                "Gin",
+                "Blue Cura\u00e7ao",
+                "Sour mix",
+                "7-Up or ginger ale"
+            ],
+            "measurements": [
+                "1/2 oz",
+                "1/2 oz",
+                "1/2 oz",
+                "1/2 oz",
+                "1/2 oz",
+                "2 oz",
+                "2 oz"
             ],
             "instructions": [],
             "garnishes": []
@@ -406,12 +543,19 @@
         {
             "title": "Blue Hawaiian",
             "ingredients": [
-                "3/4 oz. Rum",
-                "3/4 oz. Vodka",
-                "1/2 oz. Blue Cura\u00e7ao",
-                "3-4 oz. Pineapple Juice",
-                "1 oz. Sweet & Sour",
+                "Rum",
+                "Vodka",
+                "Blue Cura\u00e7ao",
+                "Pineapple Juice",
+                "Sweet & Sour",
                 "Ice"
+            ],
+            "measurements": [
+                "3/4 oz",
+                "3/4 oz",
+                "1/2 oz",
+                "3-4 oz",
+                "1 oz"
             ],
             "instructions": [],
             "garnishes": []

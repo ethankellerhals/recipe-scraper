@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipes</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Recipes</h1>
+    </header>
+    <nav>
+        <a href="/index">Home</a>
+        <a href="#">Recipes</a>
+    </nav>
+    <main>
+        <div class="topnav">
+            <a href="#">Add Recipe</a>
+            <a href="#">Filter</a>
+            <input type="text" placeholder="Search...">
+        </div>
+        <ul class="recipes">
+        {% for category, drinks in drink_data.items() %}
+            {% for drink in drinks %}
+                <li>
+                    <h3>{{ drink['title'] }}</h3>
+                    <h4>Ingredients:</h4>
+                    <ul>
+                    {% for ingredient in drink['ingredients'] %}
+                        <li>{{ ingredient }}</li>
+                    {% endfor %}
+                    </ul>
+                    <h4>Instructions:</h4>
+                    <ul>
+                    {% for instruction in drink['instructions'] %}
+                        <li>{{ instruction }}</li>
+                    {% endfor %}
+                    </ul>
+                    <h4>Garnishes:</h4>
+                    {% for garnish in drink['garnishes'] %}
+                        <p>{{ garnish }}</p>
+                    {% endfor %}
+                </li>
+            {% endfor %}
+        {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>
