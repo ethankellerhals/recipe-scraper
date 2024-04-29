@@ -995,8 +995,12 @@
         {
             "title": "Cheeky Vimto",
             "ingredients": [
-                "2 shots of Port",
-                "1 bottle (330ml) of WKD Blue"
+                "Port",
+                "WKD Blue"
+            ],
+            "measurements": [
+                "2 shots",
+                "1 bottle (330ml)"
             ],
             "instructions": [],
             "garnishes": []
@@ -1040,9 +1044,14 @@
         {
             "title": "Bob Dylan",
             "ingredients": [
-                "12oz Surge",
-                "4oz J\u00e4germeister",
-                "16oz Ice"
+                "Surge",
+                "J\u00e4germeister",
+                "Ice"
+            ],
+            "measurements": [
+                "12 oz",
+                "4 oz",
+                "16 oz"
             ],
             "instructions": [],
             "garnishes": []
@@ -1059,9 +1068,14 @@
         {
             "title": "Third Reich",
             "ingredients": [
-                "1 part J\u00e4germeister",
-                "1 part Rumplemintz",
-                "1 part Goldschlager"
+                "J\u00e4germeister",
+                "Rumplemintz",
+                "Goldschlager"
+            ],
+            "measurements": [
+                "1 part",
+                "1 part",
+                "1 part"
             ],
             "instructions": [],
             "garnishes": []
