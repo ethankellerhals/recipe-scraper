@@ -55,8 +55,12 @@
                     <div class="column checkboxes">
                         <div class="ingredients-checkboxes">
                             {% for liquor in liquors %}
-                                <label><input type="checkbox" name="liquors" value="{{ liquor }}">{{ liquor }}</label><br>
+                                <label><input type="checkbox" name="liquors" onchange="updateSelections('liquors', this)" value="{{ liquor }}">{{ liquor }}</label><br>
                             {% endfor %}
+                            <button onclick="displayIngredients()">Liqueurs</button>
+                            {% for liqueur in liqueurs %}
+                                <label style="display: none;"><input type="checkbox" name="liqueurs" onchange="updateSelections('liqueurs', this)" value="{{ liqueur }}">{{ liqueur }}</label>
+                            {% endfor %}   
                         </div>
                     </div>
                     <div class="column btns">
@@ -65,16 +69,16 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group mixers">
+            <div class="form-group mixers" style="display: none;">
                 <h2 class="sub-heading">Select Mixers</h2>
                 <div class="grid-container">
                     <div class="column btns">
-                        <button class="button button-primary" type="button" onclick="showAlcohols()">&#8592;</button>
+                        <button class="button button-primary" type="button"  onclick="showAlcohols()">&#8592;</button>
                     </div>
                     <div class="column checkboxes">
                         <div class="ingredients-checkboxes">
                             {% for mixer in mixers %}
-                                <label><input type="checkbox" name="mixers" value="{{ mixer }}">{{ mixer }}</label><br>
+                                <label><input type="checkbox" name="mixers" onchange="updateSelections('mixers', this)" value="{{ mixer }}">{{ mixer }}</label><br>
                             {% endfor %}
                         </div>
                     </div>
@@ -98,7 +102,7 @@
                     <button class="button button-primary next" type="button" onclick="showGarnishes()">&#8594;</button>
                 </div> -->
             </div>
-            <div class="form-group garnishes">
+            <div class="form-group garnishes" style="display: none;">
                 <h2 class="sub-heading">Select Garnishes</h2>
                 <div class="grid-container">
                     <div class="column btns">
@@ -107,7 +111,7 @@
                     <div class="column checkboxes">
                         <div class="ingredients-checkbox">
                             {% for garnish in garnishes %}
-                                <label><input type="checkbox" name="garnishes" value="{{ garnish }}">{{ garnish }}</label><br>
+                                <label><input type="checkbox" name="garnishes" onchange="updateSelections('garnishes', this)" value="{{ garnish }}">{{ garnish }}</label><br>
                             {% endfor %}
                         </div>
                     </div>
@@ -121,15 +125,81 @@
                 <button class="button button-primary" type="submit">Find Drinks</button>
             </div>
         </form>
+        <div class="currently-selected-ingredients-container">
+            <h5>Currently Selected Ingredients</h5>
+            <div id="currently-selected-ingredients"></div>
+        </div>
     </div>
     <footer>
         <p>Have a suggestion? Please send us an email <a href="#">here</a>.</p>
     </footer>
     <script>
+
+        var selectedIngredients = [];
+        function updateSelections(category, checkbox) {
+            var isChecked = checkbox.checked;
+            var value = checkbox.value;
+
+            if (isChecked) {
+                selectedIngredients.push(value);
+            } else {
+                var index = selectedIngredients.indexOf(value);
+                if (index !== -1) {
+                    selectedIngredients.splice(index, 1);
+                }
+            }
+            displaySelectedIngredients();
+        }
+        function displaySelectedIngredients() {
+            var selectedIngredientsContainer = document.getElementById('currently-selected-ingredients');
+            selectedIngredientsContainer.innerHTML = '';
+
+            selectedIngredients.forEach(function(ingredient) {
+                var deleteButton = document.createElement('button');
+                deleteButton.innerText = 'X';
+                deleteButton.className = 'delete-button';
+                deleteButton.onclick = function() {
+                    removeSelectedIngredient(ingredient);
+                };
+
+                var ingredientItem = document.createElement('div');
+                ingredientItem.className = 'ingredient-item';
+                ingredientItem.innerText = ingredient;
+                ingredientItem.appendChild(deleteButton);
+
+                selectedIngredientsContainer.appendChild(ingredientItem);
+            });
+        }
+
+        function removeSelectedIngredient(ingredient) {
+            var index = selectedIngredients.indexOf(ingredient);
+            if (index !== -1) {
+                selectedIngredients.splice(index, 1);
+                displaySelectedIngredients();
+            }
+        }
+
+        // Function to clear all selections
+        function clearAllSelections() {
+            selectedIngredients = [];
+            displaySelectedIngredients();
+        }
+        // function updateSelectedIngredients(category, checkbox) {
+        //     var selectedIngredients = document.getElementById('currently-selected-ingredients');
+        //     var selectedCheckboxes = document.querySelectorAll('input[name="' + category + '"]:checked');
+        //     var selectedIngredientsList = "";
+        //     selectedCheckboxes.forEach(checkbox => {
+        //         selectedIngredientsList += checkbox.value + "<br>";
+        //     });
+        //     selectedIngredients.innerHTML = selectedIngredientsList;
+        // }
         function showAlcohols() {
             document.querySelector('.mixers').style.display = 'none';
             document.querySelector('.garnishes').style.display = 'none';
             document.querySelector('.alcohol').style.display = 'inline';
+        }
+        function showLiqueurs() {
+            document.querySelector('.liqueur').style.display = 'inline';
         }
         function showMixers() {
             document.querySelector('.alcohol').style.display = 'none';

@@ -90,7 +90,9 @@ label {
 	overflow-y: auto;
 }
 .ingredients-checkboxes {
-	max-height: 600px;
+	
+	
+	max-height: 400px;
 	overflow-y: auto;
 }
 /* .buttons-container {
@@ -102,6 +104,10 @@ label {
 .main-buttons {
 	display: flex;
 	margin-top: 1em;
+}
+#currently-selected-ingredients-container {
+	top: 0;
+	display: flex;
 }
 
 /* .form-group {
