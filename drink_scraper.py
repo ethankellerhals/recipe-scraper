@@ -4,10 +4,10 @@ from bs4 import BeautifulSoup
 
 
 # recipe data from https://en.wikibooks.org/wiki/Bartending/Cocktails
-
-
+if "/wiki/Bartending/Cocktails/" in recipe_link['href']:
+'https://en.wikibooks.org/wiki/Bartending/Cocktails'
 def get_drink_categories():
-	url = 'https://en.wikibooks.org/wiki/Bartending/Cocktails'
+	url = 'some-link-here'
 	response = requests.get(url)
 	soup = BeautifulSoup(response.text, 'html.parser')
 
@@ -26,7 +26,7 @@ def get_drink_recipes(category_url):
 	drink_recipes = []
 
 	for recipe_link in soup.select('.mw-category ul li a'):
-		if "/wiki/Bartending/Cocktails/" in recipe_link['href']:
+		if "/some/path/here/" in recipe_link['href']:
 			drink_recipes.append(recipe_link['href'])
 	
 	return drink_recipes
